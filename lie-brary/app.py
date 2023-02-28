@@ -20,7 +20,7 @@ app.layout = html.Div([
 	dbc.Container([
         # Header
 	    html.H1(children='Lie-brary',
-	        style={'textAlign': 'left', 'color': 'blue', 'font-size': '40px', 'font-weight': 'bold'}),
+	        style={'textAlign': 'left', 'color': '#0C2D48', 'font-size': '40px', 'font-weight': 'bold'}),
 
         html.Div(children='"Bringing clarity to the chaos of online information"',
             style={'textAlign': 'left', 'color': 'black', 'font-size': '20px', 'font-style': 'italic'}),

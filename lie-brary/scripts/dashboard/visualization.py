@@ -17,12 +17,13 @@ def barplot_fact(aggregate_df):
             x='fact',
             y='count',
             color='sentiment',
-            #color_discrete_sequence=['#00cc96', '#ff7f0e', '#d62728'],
+            color_discrete_sequence=['#FB475E','#E5DDC8','#019992'],
             labels={'fact':'Fact or Non-Fact',
                     'count':'Number of Posts',
                     'sentiment':'Sentiment'},
-            title='Number of Posts by Fact')
-    return fig
+            title='Number of Posts by Fact',
+            )
+    return fig.update_layout(showlegend=False)
 
 
 def barplot_sentiment(aggregate_df):
@@ -37,11 +38,12 @@ def barplot_sentiment(aggregate_df):
              x='sentiment',
              y='count',
              color='fact',
+             color_discrete_sequence=['#01949A','#FB475E',],
              labels={'fact':'Fact or Non-Fact',
                      'count':'Number of Posts',
                      'sentiment':'Sentiment'},
              title='Number of Posts by Sentiment')
-    return fig2
+    return fig2.update_layout(showlegend=False)
 
 
 # create line chart, number of posts by date
@@ -51,8 +53,11 @@ def line_numpost(df):
                  x='created_at',
                  y='count',
                  color='keyword',
+                 #color_discrete_sequence=['#FB475E','#E5DDC8','#019992'],
                  labels={'created_at':'Date',
                          'count':'Number of Posts',
                          'keyword':'Keyword'},
-                 title='Number of Posts by Date')
+                 title='Number of Posts by Date',
+                 template='seaborn'
+                 )
     return fig
