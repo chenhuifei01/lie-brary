@@ -14,7 +14,7 @@ import scripts.dashboard.visualization as viz
 dash.register_page(__name__,  path='/')
 
 # Import Data
-data = pd.read_csv('data\cleaned_data\cleaned_data.csv')
+data = pd.read_csv('data/cleaned_data/cleaned_data.csv')
 data['count'] = 1
 
 # Create Control List

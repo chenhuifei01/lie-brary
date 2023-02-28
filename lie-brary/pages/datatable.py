@@ -13,7 +13,7 @@ import dash_bootstrap_components as dbc
 
 dash.register_page(__name__)
 
-data = pd.read_csv('data\cleaned_data\cleaned_data.csv')
+data = pd.read_csv('data/cleaned_data/cleaned_data.csv')
 df = data[['sentiment', 'fact', 'sources', 'text']]
 
 

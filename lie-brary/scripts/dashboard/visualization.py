@@ -1,6 +1,6 @@
 '''
 This script is used to create the visualization function for the dashboard
-Created by: @rezapratama
+- R
 '''
 
 import plotly.express as px

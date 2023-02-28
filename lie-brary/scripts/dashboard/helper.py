@@ -1,6 +1,6 @@
 '''
 Helper functions for dashboard
-Created by: @rezapratama
+- R
 '''
 
 SENTIMENT = ['POSITIVE', 'NEGATIVE', 'NEUTRAL']
