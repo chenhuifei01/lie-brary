@@ -1,6 +1,6 @@
 '''
-This file contains the dashboard page
-Created by: @rezapratama
+This file contains the dashboard page.
+- R
 '''
 
 import dash

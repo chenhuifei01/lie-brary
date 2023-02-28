@@ -1,3 +1,8 @@
+'''
+This page is used to display the analysis page.
+- R
+'''
+
 from dash import html, register_page, get_asset_url
 
 register_page(__name__)
