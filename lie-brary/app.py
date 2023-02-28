@@ -2,11 +2,8 @@
 This is the main script for the dashboard. It will be used to create the layout of the dashboard.
 This will call pages in the container view. -R
 '''
-
 import dash
-from dash import Dash, html, dcc, dash_table, Input, Output, State, ClientsideFunction
-#import plotly.express as px
-#import pandas as pd
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 # Initialize the app
