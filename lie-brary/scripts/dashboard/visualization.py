@@ -4,6 +4,7 @@ This script is used to create the visualization function for the dashboard
 '''
 
 import plotly.express as px
+import pandas as pd
 
 def barplot_fact(aggregate_df):
     '''
@@ -48,6 +49,7 @@ def barplot_sentiment(aggregate_df):
 
 # create line chart, number of posts by date
 def line_numpost(df):
+    df['created_at'] = pd.to_datetime(df['created_at']).dt.date
     grouped = df.groupby(['created_at','keyword']).sum().reset_index()
     fig = px.line(grouped,
                  x='created_at',
