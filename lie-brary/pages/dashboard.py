@@ -68,12 +68,16 @@ dropdown_sentiment = dbc.Card([
 # LAYOUT PAGE
 layout = html.Div([
     # Dropdowns Menu
-    dbc.Row([dbc.Col(dropdown_sentiment, md=4)]),
+    dbc.Row([
+        dbc.Col(dropdown_sentiment, md=4, style={'margin-top':'20px'}),
+        dbc.Col(dcc.Graph(id='line_numpost'),md=8),
+
+    ]),
 
     # Barplot
     dbc.Row([
-        dbc.Col(dcc.Graph(id='bar_fact'),md=5),
-        dbc.Col(dcc.Graph(id='bar_sentiment'),md=5),
+        dbc.Col(dcc.Graph(id='bar_fact'),md=6),
+        dbc.Col(dcc.Graph(id='bar_sentiment'),md=6),
     ]),
 
 
@@ -85,6 +89,7 @@ layout = html.Div([
 @callback(
     Output('bar_fact', 'figure'),
     Output('bar_sentiment', 'figure'),
+    Output('line_numpost', 'figure'),
     [Input('sentiment_dropdown', 'value'),
      Input('fact_dropdown', 'value'),
      Input('source_dropdown', 'value'),
@@ -107,5 +112,6 @@ def filtering_data(sentiment, fact, source, keyword):
 
     bar_fact = viz.barplot_fact(aggregate)
     bar_sentiment = viz.barplot_sentiment(aggregate)
+    line_numpost = viz.line_numpost(dff)
 
-    return bar_fact, bar_sentiment
+    return bar_fact, bar_sentiment, line_numpost
