@@ -42,3 +42,17 @@ def barplot_sentiment(aggregate_df):
                      'sentiment':'Sentiment'},
              title='Number of Posts by Sentiment')
     return fig2
+
+
+# create line chart, number of posts by date
+def line_numpost(df):
+    grouped = df.groupby(['created_at','keyword']).sum().reset_index()
+    fig = px.line(grouped,
+                 x='created_at',
+                 y='count',
+                 color='keyword',
+                 labels={'created_at':'Date',
+                         'count':'Number of Posts',
+                         'keyword':'Keyword'},
+                 title='Number of Posts by Date')
+    return fig
