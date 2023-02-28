@@ -7,3 +7,7 @@ Our project’s goal is to analyze subjects that were misconstrued on social med
 
 
 ![image](lie-brary/assets/liebrary_diagram.png)
+
+
+## Current Build:
+[Dashboard](http://rezarzky.my.id:8051/)
