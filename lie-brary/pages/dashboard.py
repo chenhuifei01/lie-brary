@@ -29,7 +29,8 @@ dropdown_sentiment = dbc.Card([
 
     html.Div([
     # sentiment dropdown label
-    html.P('Sentiment'),
+    html.P('Filter by Sentiment:',
+           style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='sentiment_dropdown',
                 options=sentiment_options,
                 multi=True,
@@ -37,7 +38,8 @@ dropdown_sentiment = dbc.Card([
                 ),
 
     # fact dropdown label
-    html.P('Fact'),
+    html.P('Filter by the Label:',
+           style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='fact_dropdown',
                 options=fact_options,
                 multi=True,
@@ -45,7 +47,8 @@ dropdown_sentiment = dbc.Card([
                 ),
 
     # source dropdown label
-    html.P('Source'),
+    html.P('Filter by the Source:',
+           style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='source_dropdown',
                 options=source_options,
                 multi=True,
@@ -53,7 +56,8 @@ dropdown_sentiment = dbc.Card([
                 ),
 
     # source dropdown label
-    html.P('Keyword'),
+    html.P('Filter by the Keyword:',
+           style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='keyword_dropdown',
                 options=keyword_options,
                 multi=True,
@@ -67,6 +71,8 @@ dropdown_sentiment = dbc.Card([
 
 # LAYOUT PAGE
 layout = html.Div([
+    html.P('last update: 2023-02-20', style={'text-align':'right'}),
+
     # Dropdowns Menu
     dbc.Row([
         dbc.Col(dropdown_sentiment, md=4, style={'margin-top':'20px'}),
@@ -78,6 +84,8 @@ layout = html.Div([
     dbc.Row([
         dbc.Col(dcc.Graph(id='bar_fact'),md=6),
         dbc.Col(dcc.Graph(id='bar_sentiment'),md=6),
+
+    dbc.Row([dbc.Card(html.P('THIS WILL BE THE WORD CLOUD'))]),
     ]),
 
 

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "lie-brary"
+version = "0.1.0"
+description = "30122 Project: Lie-brary"
+authors = ["Fei Wang <chenhui1@uchicago.edu>, Reza Rizky Pratama <rezapratama@uchicago.edu>, Shradha Ganapathy <shradhag@uchicago.edu>, Xiomara Salazar <xiomara@uchicago.edu>"]
+readme = "README.md"
+packages = [{include = "lie_brary"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.10"
+dash = "1.21.0"
+dash-bootstrap-components = "1.3.1"
+tweepy = "4.12.1"
+pandas = "1.4.2"
+plotly = "5.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

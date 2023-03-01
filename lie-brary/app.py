@@ -12,6 +12,20 @@ app = Dash(__name__,
            use_pages=True)
 app.title = 'Lie-brary'
 
+
+# Navigation bar
+navbar = dbc.NavbarSimple(
+    children=[
+        dbc.NavItem(dbc.NavLink("Dashboard", href="/", active="exact", style={'font-weight': 'bold'})),
+        dbc.NavItem(dbc.NavLink("Analysis", href="/analysis", active="exact", style={'font-weight': 'bold'})),
+        dbc.NavItem(dbc.NavLink("Data", href="/datatable", style={'font-weight': 'bold'})),
+    ],
+    brand_href="/",
+    sticky="top",
+    color="#0C2D48",
+    dark=True,
+)
+
 # LAYOUT PAGE
 app.layout = html.Div([
 	dbc.Container([
@@ -22,22 +36,12 @@ app.layout = html.Div([
         html.Div(children='"Bringing clarity to the chaos of online information"',
             style={'textAlign': 'left', 'color': 'black', 'font-size': '20px', 'font-style': 'italic'}),
 
-	    html.Hr(),
-
         # Navigation bar
-	    html.Div(
-            [
-                html.Div(
-                    dcc.Link(
-                        f"{page['name']}", href=page["relative_path"]
-                    )
-                )
-                for page in dash.page_registry.values()
+        html.Div(navbar),
+        html.Br(),
 
-        ]),
-        html.Hr(),
-    #Pages from the pages will be rendered here
-	dash.page_container,
+        #Pages from the pages will be rendered here
+        dash.page_container,
 
     ]) # End of container
 ]) # End of layout
