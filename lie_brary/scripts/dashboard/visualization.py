@@ -15,14 +15,14 @@ def barplot_fact(aggregate_df):
         fig: barchart of fact
     '''
     fig = px.bar(aggregate_df,
-            x='fact',
+            x='misinfo',
             y='count',
             color='sentiment',
             color_discrete_sequence=['#FB475E','#E5DDC8','#019992'],
-            labels={'fact':'Fact or Non-Fact',
+            labels={'misinfo':'Minsinformation Label',
                     'count':'Number of Posts',
                     'sentiment':'Sentiment'},
-            title='Number of Posts by Fact',
+            title='Number of Posts by Misinformation Label',
             )
     return fig.update_layout(showlegend=False)
 
@@ -38,9 +38,9 @@ def barplot_sentiment(aggregate_df):
     fig2 = px.bar(aggregate_df,
              x='sentiment',
              y='count',
-             color='fact',
-             color_discrete_sequence=['#01949A','#FB475E',],
-             labels={'fact':'Fact or Non-Fact',
+             color='misinfo',
+             color_discrete_sequence=['#01949A','#FB475E'],
+             labels={'misinfo':'Minsinformation Label',
                      'count':'Number of Posts',
                      'sentiment':'Sentiment'},
              title='Number of Posts by Sentiment')
@@ -49,14 +49,14 @@ def barplot_sentiment(aggregate_df):
 
 # create line chart, number of posts by date
 def line_numpost(df):
-    df['created_at'] = pd.to_datetime(df['created_at']).dt.date
-    grouped = df.groupby(['created_at','keyword']).sum().reset_index()
+
+    grouped = df.groupby(['bydate','keyword']).sum().reset_index()
     fig = px.line(grouped,
-                 x='created_at',
+                 x='bydate',
                  y='count',
                  color='keyword',
                  #color_discrete_sequence=['#FB475E','#E5DDC8','#019992'],
-                 labels={'created_at':'Date',
+                 labels={'bydate':'Date',
                          'count':'Number of Posts',
                          'keyword':'Keyword'},
                  title='Number of Posts by Date',

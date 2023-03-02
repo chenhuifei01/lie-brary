@@ -8,21 +8,23 @@ from dash import html, dcc, callback, Input, Output
 #import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-from scripts.dashboard.helper import filter_data, SENTIMENT, FACT, SOURCE, KEYWORD
-import scripts.dashboard.visualization as viz
+import lie_brary.scripts.dashboard.helper as helper
+import lie_brary.scripts.dashboard.visualization as viz
 
 dash.register_page(__name__,  path='/')
 
 # Import Data
-data = pd.read_csv('data/cleaned_data/cleaned_data.csv')
-data['count'] = 1
+data = helper.dashboard_load_data()
+
+# Keyword List
+KEYWORD = data.keyword.dropna().unique()
+FACT = data.misinfo.dropna().unique()
 
 # Create Control List
-sentiment_options = [{'label': label, 'value': label} for label in SENTIMENT]
+sentiment_options = [{'label': label, 'value': label} for label in helper.SENTIMENT]
 fact_options = [{'label': label, 'value': label} for label in FACT]
-source_options = [{'label': label, 'value': label} for label in SOURCE]
+source_options = [{'label': label, 'value': label} for label in helper.SOURCE]
 keyword_options = [{'label': label, 'value': label} for label in KEYWORD]
-
 
 # Dropdowns Menu
 dropdown_sentiment = dbc.Card([
@@ -34,7 +36,7 @@ dropdown_sentiment = dbc.Card([
     dcc.Dropdown(id='sentiment_dropdown',
                 options=sentiment_options,
                 multi=True,
-                value=list(SENTIMENT)
+                value=list(helper.SENTIMENT)
                 ),
 
     # fact dropdown label
@@ -52,7 +54,7 @@ dropdown_sentiment = dbc.Card([
     dcc.Dropdown(id='source_dropdown',
                 options=source_options,
                 multi=True,
-                value=list(SOURCE)
+                value=list(helper.SOURCE)
                 ),
 
     # source dropdown label
@@ -103,7 +105,7 @@ layout = html.Div([
      Input('source_dropdown', 'value'),
      Input('keyword_dropdown', 'value')],
 )
-def filtering_data(sentiment, fact, source, keyword):
+def filtering_data(sentiment, misinfo, source, keyword):
     '''
     Filter data based on user input
     Input:
@@ -115,8 +117,8 @@ def filtering_data(sentiment, fact, source, keyword):
         bar_fact: barplot of fact
         bar_sentiment: barplot of sentiment
     '''
-    dff = filter_data(data, sentiment, fact, source, keyword)
-    aggregate = dff.groupby(['sentiment','fact']).sum().reset_index()
+    dff = helper.filter_data(data, sentiment, misinfo, source, keyword)
+    aggregate = dff.groupby(['sentiment','misinfo']).sum().reset_index()
 
     bar_fact = viz.barplot_fact(aggregate)
     bar_sentiment = viz.barplot_sentiment(aggregate)

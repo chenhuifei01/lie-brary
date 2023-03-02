@@ -13,8 +13,8 @@ import dash_bootstrap_components as dbc
 
 dash.register_page(__name__)
 
-data = pd.read_csv('data/cleaned_data/cleaned_data.csv')
-df = data[['sentiment', 'fact', 'sources', 'text']]
+data = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
+df = data[['text','sentiment', 'misinfo', 'source','date']]
 
 
 PAGE_SIZE = 20
