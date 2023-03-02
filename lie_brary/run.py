@@ -4,7 +4,7 @@ from lie_brary.scripts import getdata
 
 def run_dash():
     '''Run the dash app'''
-    app.app.run_server(debug=True)
+    app.app.run_server(debug=True, port=8051)
 
 def run_getdata():
     '''Run the getdata script'''
