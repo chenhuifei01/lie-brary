@@ -1,5 +1,5 @@
 .ipynb_checkpoints
 **/*.ipynb_checkpoints/
 **/__pycache__/
-lie-brary/scripts/scrap/key.py
+lie_brary/scripts/scrap/key.py
 .vscode
