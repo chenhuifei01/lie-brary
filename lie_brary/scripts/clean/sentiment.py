@@ -12,9 +12,14 @@ sia = SentimentIntensityAnalyzer()
 # Output: {'neg': 0.0, 'neu': 0.318, 'pos': 0.682, 'compound': 0.6468}
 
 def sentiment_analysis(df):
+    '''
+    Analyze the sentiment according to the text of a post
+    Input: dataframe
+    Return: dataframe with sentiment columns
+    '''
     # Run the polarity score on the entire dataset
     res = {}
-    for i, row in tqdm(df.iterrows(), total = len(df)):
+    for _, row in tqdm(df.iterrows(), total = len(df)):
         text = row['text']
         myid = row['id_str']
         res[myid] = sia.polarity_scores(text)
@@ -24,8 +29,24 @@ def sentiment_analysis(df):
     #     break
     return vaders
 
+def clean_time_t(x):
+    '''
+    Change the date format from '2023-02-05 22:51:19+00:00' 
+    to '2023-02-05 22:51:19' for twitter data
+    Input: datetime
+    Output: datetime
+    '''
+    dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
+    return datetime.strftime(dt_obj, "%Y-%m-%d %H:%M:%S")
+
 
 def sentiment_define(x):
+    '''
+    Define the compound grades into three sentiments,
+    positive, neutral, and negative.
+    Input(float): compound grade
+    Return(str): positive, neutral, and negative  
+    '''
     # positive range: 0.3333 ~ 1
     # neutral range: -0.3333 ~ 0.3333
     # negative range: -1 ~ -0.3333
@@ -42,15 +63,34 @@ def sentiment_define(x):
         
 
 def extract_col(df, source):
+    '''
+    Extract the columns to output the Cleaned_data
+    Inputs:
+        df(pandas dataframe): reddit or twitter dataframe
+        source(str): reddit or twitter 
+    Return:
+        csv file
+    '''
+    # reformat the date of twitter
+    if source == 'twitter':
+        df['created_at'] = df['created_at'].apply(clean_time_t)
+    
+    # extract columns
     data = {'id_str': df['id_str'],
             'user.id_str': df['user.id_str'],
             'text': df['text'],
             'compund': df['compound'],
-            'sentiment':df['compound'].apply(sentiment_define),
+            'sentiment':df['compound'].apply(sentiment_define), # define sentiments
             'date': df['created_at'], 
             'keyword': df['keyword'],
             'misinfo': df['decision'],
             'context': df['context'],
             'source': source}
     df = pd.DataFrame(data)
-    return df
+
+    # Saving dataframe as a CSV file
+    filename = 'cleaned_data_'+ source + datetime.now().strftime('%Y%m%d_%H') + '.csv'
+    df.to_csv(filename) # haven't change the path to data
+    print('File saved as ', filename)
+
+    return None
