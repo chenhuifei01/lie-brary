@@ -31,13 +31,13 @@ def sentiment_analysis(df):
 
 def clean_time_t(x):
     '''
-    Change the date format from '2023-02-05 22:51:19+00:00' 
+    Change the date format from '2023-02-05 22:51:19+00:00'
     to '2023-02-05 22:51:19' for twitter data
     Input: datetime
     Output: datetime
     '''
-    dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
-    return datetime.strftime(dt_obj, "%Y-%m-%d %H:%M:%S")
+    #dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
+    return datetime.strftime(x, "%Y-%m-%d %H:%M:%S")
 
 
 def sentiment_define(x):
@@ -45,7 +45,7 @@ def sentiment_define(x):
     Define the compound grades into three sentiments,
     positive, neutral, and negative.
     Input(float): compound grade
-    Return(str): positive, neutral, and negative  
+    Return(str): positive, neutral, and negative
     '''
     # positive range: 0.3333 ~ 1
     # neutral range: -0.3333 ~ 0.3333
@@ -60,31 +60,31 @@ def sentiment_define(x):
         return 'negative'
     else:
         return 'neutral'
-        
+
 
 def extract_col(df, source):
     '''
     Extract the columns to output the Cleaned_data
     Inputs:
         df(pandas dataframe): reddit or twitter dataframe
-        source(str): reddit or twitter 
+        source(str): reddit or twitter
     Return:
         csv file
     '''
     # reformat the date of twitter
     if source == 'twitter':
         df['created_at'] = df['created_at'].apply(clean_time_t)
-    
+
     # extract columns
     data = {'id_str': df['id_str'],
             'user.id_str': df['user.id_str'],
             'text': df['text'],
             'compund': df['compound'],
             'sentiment':df['compound'].apply(sentiment_define), # define sentiments
-            'date': df['created_at'], 
+            'date': df['created_at'],
             'keyword': df['keyword'],
-            'misinfo': df['decision'],
-            'context': df['context'],
+            #'misinfo': df['decision'],
+            #'context': df['context'],
             'source': source}
     df = pd.DataFrame(data)
 

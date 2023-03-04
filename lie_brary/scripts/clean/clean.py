@@ -1,5 +1,5 @@
 import pandas as pd
-from ..scrap.scrap_twitter import scrape_t # changed the path and name
+from scrap.scrap_twitter import scrape_t # changed the path and name
 from datetime import datetime
 
 
@@ -11,7 +11,7 @@ def clean(old_scrape_filename, new_scrape_filename):
     Inputs:
         old_scrape_filename: previous scrape of tweets
         new_scrape_filename: latest scrape of tweets
-    
+
     Returns -- consolidated updated csv
     """
     old_scape = pd.read_csv(old_scrape_filename)
@@ -32,5 +32,5 @@ def clean(old_scrape_filename, new_scrape_filename):
 
     print(f"Duplicates tweets were removed. Please see updated tweets in \
             {filename} ")
-    
+
     return None

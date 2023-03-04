@@ -3,7 +3,7 @@ import sys
 import tweepy
 import pandas as pd
 from datetime import datetime
-import key
+import lie_brary.scripts.scrap.key as key
 
 # Authenticate to Twitter
 # This is Reza's API Key, please don't share the key.

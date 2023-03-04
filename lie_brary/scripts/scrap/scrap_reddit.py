@@ -1,8 +1,8 @@
 # ! pip install praw
 import praw
 import pandas as pd
-import datetime as dt
-import key
+from datetime import datetime as dt
+import lie_brary.scripts.scrap.key as key
 
 # Reddit API
 CLIENT_ID = key.CLIENT_ID
@@ -55,7 +55,7 @@ def scrape_r(keywords) :
         'title' : post.title,
         'selftext' : post.selftext,
         'text' : post.title + post.selftext,
-        'created_at' : dt.datetime.fromtimestamp(post.created),
+        'created_at' : dt.fromtimestamp(post.created),
         'upvote_ratio': post.upvote_ratio,
         'ups' : post.ups,
         'downs' : post.downs,
@@ -65,8 +65,9 @@ def scrape_r(keywords) :
         'keyword' : keyword
     }, ignore_index = True)
 
-    # Saving dataframe as a CSV file
+    #Saving dataframe as a CSV file
     filename = 'reddit_'+topics+dt.now().strftime('%Y%m%d_%H')+'.csv'
+    #filename = 'reddit_raw.csv'
     df.to_csv('lie_brary/data/raw_data/' + filename, index=False)
     print('File saved as ', filename, 'at lie_brary/data/raw_data')
 
