@@ -19,14 +19,13 @@ def sentiment_analysis(df):
     '''
     # Run the polarity score on the entire dataset
     res = {}
-    for _, row in tqdm(df.iterrows(), total = len(df)):
-        text = row['text']
-        myid = row['id_str']
+    for i in range(len(df)):
+        text = df.iloc[i]['text']
+        myid = df.iloc[i]['id_str']
         res[myid] = sia.polarity_scores(text)
     vaders = pd.DataFrame(res).T
     vaders = vaders.reset_index().rename(columns = {'index':'id_str'})
     vaders = vaders.merge(df, how = 'left')
-    #     break
     return vaders
 
 def clean_time_t(x):
