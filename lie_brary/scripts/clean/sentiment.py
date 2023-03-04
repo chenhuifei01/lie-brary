@@ -89,8 +89,8 @@ def extract_col(df, source):
     df = pd.DataFrame(data)
 
     # Saving dataframe as a CSV file
-    filename = 'cleaned_data_'+ source + datetime.now().strftime('%Y%m%d_%H') + '.csv'
-    df.to_csv(filename) # haven't change the path to data
-    print('File saved as ', filename)
+    # filename = 'cleaned_data_'+ source + datetime.now().strftime('%Y%m%d_%H') + '.csv'
+    # df.to_csv(filename) # haven't change the path to data
+    # print('File saved as ', filename)
 
-    return None
+    return df

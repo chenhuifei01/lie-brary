@@ -28,7 +28,7 @@ topics = 'safe-t'
 keywords = ['Safe-T', 'Purge Law', 'Pretrial Fairness Act']
 
 
-def scrape(keywords) :
+def scrape_r(keywords) :
     '''
     Scrape posts from Reddit using keywords
     Input: keywords(list)
@@ -67,154 +67,12 @@ def scrape(keywords) :
 
     # Saving dataframe as a CSV file
     filename = 'reddit_'+topics+dt.now().strftime('%Y%m%d_%H')+'.csv'
-    df.to_csv(filename)
-    print('File saved as ', filename)
+    df.to_csv('lie_brary/data/raw_data/' + filename, index=False)
+    print('File saved as ', filename, 'at lie_brary/data/raw_data')
 
-    return None
+    return df
 
 
 if __name__ == "__main__":
-    scrape(keywords)
-
-
-
-'''
-The keys to pull the data
-For example, 'post.title ' will get the title of the post
-
-keys = ['approved_at_utc',
-        'subreddit',
-        'selftext',
-        'author_fullname',
-        'saved',
-        'mod_reason_title',
-        'gilded',
-        'clicked',
-        'title',
-        'link_flair_richtext',
-        'subreddit_name_prefixed',
-        'hidden',
-        'pwls',
-        'link_flair_css_class',
-        'downs',
-        'thumbnail_height',
-        'top_awarded_type',
-        'hide_score',
-        'name',
-        'quarantine',
-        'link_flair_text_color',
-        'upvote_ratio',
-        'author_flair_background_color',
-        'subreddit_type',
-        'ups',
-        'total_awards_received',
-        'media_embed',
-        'thumbnail_width',
-        'author_flair_template_id',
-        'is_original_content',
-        'user_reports',
-        'secure_media',
-        'is_reddit_media_domain',
-        'is_meta',
-        'category',
-        'secure_media_embed',
-        'link_flair_text',
-        'can_mod_post',
-        'score',
-        'approved_by',
-        'is_created_from_ads_ui',
-        'author_premium',
-        'thumbnail',
-        'edited',
-        'author_flair_css_class',
-        'author_flair_richtext',
-        'gildings',
-        'post_hint',
-        'content_categories',
-        'is_self',
-        'mod_note',
-        'created',
-        'link_flair_type',
-        'wls',
-        'removed_by_category',
-        'banned_by',
-        'author_flair_type',
-        'domain',
-        'allow_live_comments',
-        'selftext_html',
-        'likes',
-        'suggested_sort',
-        'banned_at_utc',
-        'url_overridden_by_dest',
-        'view_count',
-        'archived',
-        'no_follow',
-        'is_crosspostable',
-        'pinned',
-        'over_18',
-        'preview',
-        'all_awardings',
-        'awarders',
-        'media_only',
-        'can_gild',
-        'spoiler',
-        'locked',
-        'author_flair_text',
-        'treatment_tags',
-        'visited',
-        'removed_by',
-        'num_reports',
-        'distinguished',
-        'subreddit_id',
-        'author_is_blocked',
-        'mod_reason_by',
-        'removal_reason',
-        'link_flair_background_color',
-        'id',
-        'is_robot_indexable',
-        'report_reasons',
-        'author',
-        'discussion_type',
-        'num_comments',
-        'send_replies',
-        'whitelist_status',
-        'contest_mode',
-        'mod_reports',
-        'author_patreon_flair',
-        'author_flair_text_color',
-        'permalink',
-        'parent_whitelist_status',
-        'stickied',
-        'url',
-        'subreddit_subscribers',
-        'created_utc',
-        'num_crossposts',
-        'media',
-        'is_video']
-'''
-
-'''
-topics = 'health_en'
-lst_keywords = ['damar hamlin + vaccine',
-                'mRNa vaccine',
-                'the jab',
-                'anastasia weaver',
-                'died suddenly',
-                'christian eriksen',
-                'vaers',
-                'vaccine + alumnium',
-                'vaccine + mercury',
-                'vaccine injury',
-                'vaccine sterile',
-                'vaccine ICU',
-                'vaxx',
-                'vac death']
-
-topics = 'health_sp'
-lst_keywords = ['vacuna',
-                '#COVID19',
-                'ARNm',
-                'vacuna & embaracada',
-                'ARNm & cáncer']
-'''
+    scrape_r(keywords)
 

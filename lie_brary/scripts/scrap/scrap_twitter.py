@@ -101,10 +101,10 @@ def scrape_t(keywords): # changed the function name to scrape_t
 
         # Saving dataframe as a CSV file
         file_name = 'tweets_'+topics+datetime.now().strftime('%Y%m%d_%H')+'.csv'
-        tweets_df.to_csv(file_name, index=False)
-        print('File saved as '+file_name)
+        tweets_df.to_csv('lie_brary/data/raw_data/' + file_name, index=False)
+        print('File saved as ', file_name, 'at lie_brary/data/raw_data')
 
-    return None
+    return tweets_df
 
 if __name__ == "__main__":
     scrape_t(keywords)
