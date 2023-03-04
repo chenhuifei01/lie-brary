@@ -5,8 +5,6 @@ This file contains the dashboard page.
 
 import dash
 from dash import html, dcc, callback, Input, Output
-#import plotly.express as px
-import pandas as pd
 import dash_bootstrap_components as dbc
 import lie_brary.scripts.dashboard.helper as helper
 import lie_brary.scripts.dashboard.visualization as viz
@@ -16,16 +14,6 @@ dash.register_page(__name__,  path='/')
 # Import Data
 data = helper.dashboard_load_data()
 
-# Keyword List
-KEYWORD = data.keyword.dropna().unique()
-FACT = data.misinfo.dropna().unique()
-
-# Create Control List
-sentiment_options = [{'label': label, 'value': label} for label in helper.SENTIMENT]
-fact_options = [{'label': label, 'value': label} for label in FACT]
-source_options = [{'label': label, 'value': label} for label in helper.SOURCE]
-keyword_options = [{'label': label, 'value': label} for label in KEYWORD]
-
 # Dropdowns Menu
 dropdown_sentiment = dbc.Card([
 
@@ -34,7 +22,7 @@ dropdown_sentiment = dbc.Card([
     html.P('Filter by Sentiment:',
            style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='sentiment_dropdown',
-                options=sentiment_options,
+                options=helper.sentiment_options,
                 multi=True,
                 value=list(helper.SENTIMENT)
                 ),
@@ -43,16 +31,16 @@ dropdown_sentiment = dbc.Card([
     html.P('Filter by the Label:',
            style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='fact_dropdown',
-                options=fact_options,
+                options=helper.fact_options,
                 multi=True,
-                value=list(FACT)
+                value=list(helper.FACT)
                 ),
 
     # source dropdown label
     html.P('Filter by the Source:',
            style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='source_dropdown',
-                options=source_options,
+                options=helper.source_options,
                 multi=True,
                 value=list(helper.SOURCE)
                 ),
@@ -61,20 +49,17 @@ dropdown_sentiment = dbc.Card([
     html.P('Filter by the Keyword:',
            style={'margin-top':'20px', 'margin-bottom':'0px', 'padding-bottom':'0px'}),
     dcc.Dropdown(id='keyword_dropdown',
-                options=keyword_options,
+                options=helper.keyword_options,
                 multi=True,
-                value=list(KEYWORD)
+                value=list(helper.KEYWORD)
                 )
 ])
 
 ], body=True, color='light')
 
 
-
 # LAYOUT PAGE
 layout = html.Div([
-    html.P('last update: 2023-02-20', style={'text-align':'right'}),
-
     # Dropdowns Menu
     dbc.Row([
         dbc.Col(dropdown_sentiment, md=4, style={'margin-top':'20px'}),
@@ -86,10 +71,7 @@ layout = html.Div([
     dbc.Row([
         dbc.Col(dcc.Graph(id='bar_fact'),md=6),
         dbc.Col(dcc.Graph(id='bar_sentiment'),md=6),
-
-    dbc.Row([dbc.Card(html.P('THIS WILL BE THE WORD CLOUD'))]),
     ]),
-
 
 
 ]) # End of Layout

@@ -9,16 +9,15 @@ import dash
 from dash import html, dcc, callback, Input, Output, dash_table
 import pandas as pd
 import dash_bootstrap_components as dbc
+import lie_brary.scripts.dashboard.helper as helper
 
 
 dash.register_page(__name__)
 
-data = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
-df = data[['text','sentiment', 'misinfo', 'source','date']]
+df = helper.datatable_load_data()
 
 
-PAGE_SIZE = 20
-
+PAGE_SIZE = 5
 
 layout = dash_table.DataTable(
     id='table-filtering',
