@@ -5,8 +5,15 @@ Helper functions for dashboard
 import pandas as pd
 
 SENTIMENT = ['positive', 'negative', 'neutral']
-
 SOURCE = ['twitter', 'reddit']
+FACT = ['not-misinfo', 'misinformation']
+KEYWORD = ['Pretrial Fairness Act','Safe-T','Purge Law','purge+law']
+
+# Create Control List
+sentiment_options = [{'label': label, 'value': label} for label in SENTIMENT]
+fact_options = [{'label': label, 'value': label} for label in FACT]
+source_options = [{'label': label, 'value': label} for label in SOURCE]
+keyword_options = [{'label': label, 'value': label} for label in KEYWORD]
 
 
 def dashboard_load_data():
@@ -44,3 +51,25 @@ def filter_data(df, sentiment, misinfo, source, keyword):
     ]
     return dff
 
+def get_last_update():
+    '''
+    Get the last update date
+    Output:
+        last_update: string
+    '''
+    df = pd.read_csv('lie_brary/data/cleaned_data/update_date.csv')
+    last_update = df['update_date'].iloc[-1]
+    return "last updated: "+ str(last_update)
+
+
+def datatable_load_data():
+    '''
+    Load data for datatable
+    Input:
+        None
+    Output:
+        df: dataframe
+    '''
+    df = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
+    df = df[['text','sentiment', 'misinfo', 'source','date']]
+    return df
