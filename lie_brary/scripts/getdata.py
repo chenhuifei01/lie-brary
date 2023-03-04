@@ -61,7 +61,8 @@ def getdata():
     dff_t = extract_col(dff_t, 'twitter')
 
     # combine two dataframes from different sources and generate combined csv
-    df = dff_r.append(dff_t, ignore_index=True)
+    df = df_cleaned.append(dff_r, ignore_index=True)
+    df = df_cleaned.append(dff_t, ignore_index=True)
     filename = 'cleaned_data.csv'
     df.to_csv('lie_brary/data/cleaned_data/' + filename, index=False)
     print('File updated as ', filename, 'at lie_brary/data/cleaned_data')
