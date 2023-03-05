@@ -67,13 +67,13 @@ def scrape_t(keywords): # changed the function name to scrape_t
 
         # Pulling information from tweets iterable object
         # Add or remove tweet information you want in the below list comprehension
-        tweets_list = [[tweet.created_at,
+        tweets_list = [[datetime.strftime(tweet.created_at, "%Y-%m-%d %H:%M:%S"),
                         tweet.id_str,
                         tweet.source,
                         tweet.text,
                         tweet.in_reply_to_status_id_str,
                         tweet.user.id_str,
-                        tweet.user.created_at,
+                        datetime.strftime(tweet.user.created_at, "%Y-%m-%d %H:%M:%S"),
                         tweet.user.name,
                         tweet.user.screen_name,
                         tweet.user.description,

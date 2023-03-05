@@ -45,26 +45,28 @@ def scrape_r(keywords) :
 
     # Pulling information from Reddit iterable object
     # Creation of dataframe from lst_post
-    df = pd.DataFrame()
+    df_data = []
 
     for post, keyword in lst_post:
-        df = df.append({
-        'id_str' : post.id,
-        'user.id_str' : post.author_fullname,
-        'subreddit' : post.subreddit,
-        'title' : post.title,
-        'selftext' : post.selftext,
-        'text' : post.title + post.selftext,
-        'created_at' : dt.fromtimestamp(post.created),
-        'upvote_ratio': post.upvote_ratio,
-        'ups' : post.ups,
-        'downs' : post.downs,
-        'score' : post.score,
-        'permalink': 'https://www.reddit.com/' + post.permalink,
-        'num_comments' : post.num_comments,
-        'keyword' : keyword,
-        'source' : 'reddit'
-    }, ignore_index = True)
+        df_data.append({
+            'id_str' : post.id,
+            'user.id_str' : post.author_fullname,
+            'subreddit' : post.subreddit,
+            'title' : post.title,
+            'selftext' : post.selftext,
+            'text' : post.title + post.selftext,
+            'created_at' : dt.fromtimestamp(post.created),
+            'upvote_ratio': post.upvote_ratio,
+            'ups' : post.ups,
+            'downs' : post.downs,
+            'score' : post.score,
+            'permalink': 'https://www.reddit.com/' + post.permalink,
+            'num_comments' : post.num_comments,
+            'keyword' : keyword,
+            'source' : 'reddit'
+        })
+
+    df = pd.DataFrame(df_data)
 
     #Saving dataframe as a CSV file
     filename = 'reddit_'+topics+dt.now().strftime('%Y%m%d_%H')+'.csv'
