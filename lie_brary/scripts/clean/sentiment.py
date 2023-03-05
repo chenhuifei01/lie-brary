@@ -79,13 +79,14 @@ def extract_col(df, source):
     data = {'id_str': df['id_str'],
             'user.id_str': df['user.id_str'],
             'text': df['text'],
-            'compund': df['compound'],
+            'compound': df['compound'],
             'sentiment':df['compound'].apply(sentiment_define), # define sentiments
             'date': df['created_at'],
             'keyword': df['keyword'],
             #'misinfo': df['decision'],
             #'context': df['context'],
-            'source': source}
+            'source': df['source']
+            }
     df = pd.DataFrame(data)
 
     # Saving dataframe as a CSV file

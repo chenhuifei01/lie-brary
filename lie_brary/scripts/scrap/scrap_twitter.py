@@ -57,7 +57,8 @@ def scrape_t(keywords): # changed the function name to scrape_t
     'retweeted',
     'lang',
     'coordinates',
-    'keyword'
+    'keyword',
+    'source'
     ]
     tweets_df = pd.DataFrame(columns=column_list)
     for text in keywords:
@@ -89,13 +90,12 @@ def scrape_t(keywords): # changed the function name to scrape_t
                         tweet.retweeted,
                         tweet.lang,
                         tweet.coordinates,
-                        text
+                        text,
+                        "twitter"
                         ] for tweet in tweets]
 
         # Creation of dataframe from tweets_list
-        # Did not include column names to simplify code
         tweets_df = pd.concat([tweets_df, (pd.DataFrame(tweets_list, columns = column_list))])
-        #tweets_df = tweets_df.append(pd.DataFrame(tweets_list, columns = column_list), ignore_index = True)
 
         print(text+' done\n')
 

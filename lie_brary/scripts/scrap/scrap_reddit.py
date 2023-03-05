@@ -62,7 +62,8 @@ def scrape_r(keywords) :
         'score' : post.score,
         'permalink': 'https://www.reddit.com/' + post.permalink,
         'num_comments' : post.num_comments,
-        'keyword' : keyword
+        'keyword' : keyword,
+        'source' : 'reddit'
     }, ignore_index = True)
 
     #Saving dataframe as a CSV file
