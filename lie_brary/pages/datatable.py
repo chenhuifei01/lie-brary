@@ -2,7 +2,7 @@
 Page for the datatable
 This page is used to display the data in a table format
 
-Source: https://dash.plotly.com/datatable/callbacks
+Edited from source: https://dash.plotly.com/datatable/callbacks
 - R
 '''
 import dash

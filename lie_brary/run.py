@@ -1,3 +1,10 @@
+'''
+Run the app or the getdata script, depending on the input provided
+- To run the dashboard, type "python -m lie_brary dashboard"
+- To run update data, type "python -m lie_brary getdata"
+- R
+'''
+
 import sys
 from lie_brary import app
 from lie_brary.scripts import getdata
