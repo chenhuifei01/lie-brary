@@ -11,8 +11,8 @@ def run_getdata():
     getdata.getdata()
 
 
-message = 'To run the dashboard, type "python -m lie_brary dashboard" \n\
-              To run update data, type "python -m lie_brary getdata"'
+message = ('To run the dashboard, type "python -m lie_brary dashboard" | '
+            'To run update data, type "python -m lie_brary getdata"')
 
 
 def main():

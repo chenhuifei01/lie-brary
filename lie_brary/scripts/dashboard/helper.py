@@ -71,5 +71,5 @@ def datatable_load_data():
         df: dataframe
     '''
     df = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
-    df = df[['text','sentiment', 'misinfo', 'source','date']]
+    df = df[['id_str','date','text','sentiment', 'misinfo', 'source']]
     return df
