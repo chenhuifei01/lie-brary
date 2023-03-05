@@ -24,7 +24,7 @@ def dashboard_load_data():
     Output:
         df: dataframe
     '''
-    df = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
+    df = pd.read_csv('lie_brary/data/cleaned_data/cleaned_data.csv')
     df['count'] = 1
     df['bydate'] = pd.to_datetime(df['date']).dt.date
     return df
@@ -70,6 +70,6 @@ def datatable_load_data():
     Output:
         df: dataframe
     '''
-    df = pd.read_csv('lie_brary/data/cleaned_data/manual_labelled.csv')
+    df = pd.read_csv('lie_brary/data/cleaned_data/cleaned_data.csv')
     df = df[['id_str','date','text','sentiment', 'misinfo', 'source']]
     return df
