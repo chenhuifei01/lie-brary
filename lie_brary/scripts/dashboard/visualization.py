@@ -39,7 +39,7 @@ def barplot_sentiment(aggregate_df):
              x='sentiment',
              y='count',
              color='misinfo',
-             color_discrete_sequence=['#01949A','#FB475E'],
+             color_discrete_sequence=['#FB475E','#01949A'],
              labels={'misinfo':'Minsinformation Label',
                      'count':'Number of Posts',
                      'sentiment':'Sentiment'},

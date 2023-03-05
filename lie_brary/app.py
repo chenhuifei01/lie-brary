@@ -5,6 +5,7 @@ This will call pages in the container view. -R
 import dash
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
+import lie_brary.scripts.dashboard.helper as helper
 
 # Initialize the app
 app = Dash(__name__,
@@ -39,6 +40,7 @@ app.layout = html.Div([
         # Navigation bar
         html.Div(navbar),
         html.Br(),
+        html.P(helper.get_last_update(), style={'textAlign': 'right', 'color': 'black', 'font-size': '12px'}),
 
         #Pages from the pages will be rendered here
         dash.page_container,

@@ -6,7 +6,7 @@ import pandas as pd
 
 SENTIMENT = ['positive', 'negative', 'neutral']
 SOURCE = ['twitter', 'reddit']
-FACT = ['not-misinfo', 'misinformation']
+FACT = ['misinformation','not-misinfo']
 KEYWORD = ['Pretrial Fairness Act','Safe-T','Purge Law','purge+law']
 
 # Create Control List
