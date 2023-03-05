@@ -25,11 +25,12 @@ poetry install
 poetry shell
 ```
 4. Run the project
-a. Run the dashboard
+
+a. For running the dashboard
 ```sh
 python -m lie_brary dashboard
 ```
-b. Run the script to update the data
+b. For running the script to update the data
 ```sh
 python -m lie_brary getdata
 ```
