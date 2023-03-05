@@ -21,6 +21,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Analysis", href="/analysis", active="exact", style={'font-weight': 'bold'})),
         dbc.NavItem(dbc.NavLink("Data", href="/datatable", style={'font-weight': 'bold'})),
         dbc.NavItem(dbc.NavLink("Feedback", href="/feedback", style={'font-weight': 'bold'})),
+        dbc.NavItem(dbc.NavLink("Mythbusting", href="/mythbusting", style={'font-weight': 'bold'})),
     ],
     brand_href="/",
     sticky="top",
