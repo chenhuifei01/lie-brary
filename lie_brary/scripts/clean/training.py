@@ -13,8 +13,8 @@ def preprocess_training_data():
     """
     Imports csv file with labeled data (0 for not misinfo, 1 for misinfo) and
     creates:
-    - features, 
-    - tfidf: a statistical measure that evaluates how relevant 
+    - features,
+    - tfidf: a statistical measure that evaluates how relevant
     a word is to a document in a collection of documents
     - labels
     - df: a dataframe of labeled posts/tweets
@@ -23,7 +23,7 @@ def preprocess_training_data():
     Return tfdi, features, labels (0,1 labels)
     """
     #we labeled 606 pieces of content to create classifier
-    filename = 'lie_brary/data/cleaned_data/manual_labeld_all.csv'
+    filename = 'lie_brary/data/cleaned_data/manual_labelled.csv'
 
     df = pd.read_csv(filename)
     df.dropna(inplace=True)
@@ -34,7 +34,7 @@ def preprocess_training_data():
     features = tfidf.fit_transform(df.text).toarray()
     labels = df.misinfo
 
-    return tfidf, features, labels, df 
+    return tfidf, features, labels, df
 
 
 
@@ -69,7 +69,7 @@ def create_classifier():
     """
     Creates classifier to assess whether a text is misinfo or not
 
-    Input: 
+    Input:
     - df: dataframe of label data
 
     Returns:
@@ -90,25 +90,6 @@ def create_classifier():
     clf = MultinomialNB().fit(X_train_tfidf, y_train)
 
     pickle.dump(clf, open('model.pkl', 'wb'))
+    pickle.dump(count_vect, open('count_vect.pkl', 'wb'))
 
     return clf, count_vect
-
-# def predict_clf():
-#     """
-#     Takes a str and predicts classification based on training data
-
-#     Input:
-#     - new str to classify
-#     - classifier
-#     """
-#     filename = 'test_manual_labeld_twitter.csv'
-#     tfidf, features, labels, df  = preprocess_data(filename)
-
-#     build_grams(tfidf, features, labels)
-
-#     clf, count_vect = create_classifier(df)
-
-#     #print(clf.predict(count_vect.transform([str])))
-#     return clf, count_vect
-
-    

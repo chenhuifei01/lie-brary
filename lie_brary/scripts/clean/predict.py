@@ -1,7 +1,6 @@
-from lie_brary.scripts.clean.training import create_classifier
 import pickle
 
-def predict(x):
+def predict(text):
     """
     Takes in a post or tweet and return prediction of whether it is misinfo (1)
     or not (0)
@@ -12,10 +11,12 @@ def predict(x):
     Return:
         Decision - 0 if it is not misinfo and 1 if it is misinfo
     """
-    clf, count_vect = create_classifier()
-    pickled_model = pickle.load(open('model.pkl', 'rb'))
-    sample = count_vect.transform([x])
+    clf = pickle.load(open("model.pkl", "rb"))
+    vec = pickle.load(open("count_vect.pkl", "rb"))
+    text_tfidf = vec.transform([text])
+    y_pred = clf.predict(text_tfidf)
 
-    result = pickled_model.predict(sample)
-
-    return result
+    if y_pred[0] == 1:
+        return "misinformation"
+    else:
+        return "not-misinfo"
