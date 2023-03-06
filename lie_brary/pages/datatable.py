@@ -6,9 +6,7 @@ Edited from source: https://dash.plotly.com/datatable/callbacks
 by Reza R Pratama
 '''
 import dash
-from dash import html, dcc, callback, Input, Output, dash_table
-import pandas as pd
-import dash_bootstrap_components as dbc
+from dash import callback, Input, Output, dash_table
 import lie_brary.scripts.dashboard.helper as helper
 
 

@@ -4,7 +4,7 @@ by Reza R Pratama
 '''
 
 import plotly.express as px
-import pandas as pd
+import datetime
 
 def barplot_fact(aggregate_df):
     '''
@@ -57,6 +57,8 @@ def line_numpost(df):
         fig: line chart of number of posts by date
     '''
     grouped = df.groupby(['bydate','keyword']).sum().reset_index()
+    # filter only after 2021
+    grouped = grouped.loc[grouped['bydate'] >= datetime.date(2021,1,1)]
     fig = px.line(grouped,
                  x='bydate',
                  y='count',

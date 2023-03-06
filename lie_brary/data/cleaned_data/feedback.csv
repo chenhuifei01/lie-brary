@@ -1,3 +1,8 @@
 id_str, sentiment, misinfo
 115ml9q,positive,negative
-115ml9q,positive,misinformation
+115ml9q,negative,misinformation
+115ml9q,negative,not-misinfo
+115ml9q,negative,not-misinfo
+115ml9q,negative,not-misinfo
+115ml9q,negative,not-misinfo
+115ml9q,negative,not-misinfo

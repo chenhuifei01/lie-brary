@@ -11,9 +11,9 @@ from lie_brary import app
 from lie_brary.scripts import getdata
 
 def run_dash():
-    '''Run the dash app'''
+    '''Run the dash app
+    for local testing: debug=True'''
     app.app.run_server(debug=False, host= '0.0.0.0', port=8051)
-    # for local testing: debug=True
 
 def run_getdata():
     '''Run the getdata script'''

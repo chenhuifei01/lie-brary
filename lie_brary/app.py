@@ -3,8 +3,7 @@ This is the main script for the dashboard. It will be used to create the layout 
 This will call pages in the container view.
 # Author: Reza R Pratama
 '''
-import dash
-from dash import Dash, html, dcc
+from dash import Dash, html, page_container
 import dash_bootstrap_components as dbc
 import lie_brary.scripts.dashboard.helper as helper
 
@@ -47,7 +46,7 @@ app.layout = html.Div([
         html.P(helper.get_last_update(), style={'textAlign': 'right', 'color': 'black', 'font-size': '12px'}),
 
         #Pages from the pages will be rendered here
-        dash.page_container,
+        page_container,
 
     ]) # End of container
 ]) # End of layout
