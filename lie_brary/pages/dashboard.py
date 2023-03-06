@@ -1,6 +1,6 @@
 '''
 This file contains the dashboard page.
-- R
+# Author: Reza R Pratama
 '''
 
 import dash

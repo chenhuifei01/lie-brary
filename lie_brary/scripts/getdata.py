@@ -1,3 +1,9 @@
+'''
+This script is used to update the data in the cleaned_data.csv file
+Author: Chen Hui Wang
+Added write_update_date() and debugged by Reza R Pratama
+'''
+
 from lie_brary.scripts.scrap.scrap_reddit import scrape_r
 from lie_brary.scripts.scrap.scrap_twitter import scrape_t
 import pandas as pd

@@ -3,7 +3,7 @@ Page for the datatable
 This page is used to display the data in a table format
 
 Edited from source: https://dash.plotly.com/datatable/callbacks
-- R
+by Reza R Pratama
 '''
 import dash
 from dash import html, dcc, callback, Input, Output, dash_table

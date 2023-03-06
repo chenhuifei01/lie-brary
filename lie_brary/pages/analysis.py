@@ -1,6 +1,7 @@
 '''
 This page is used to display the analysis page.
-- R
+# Pages from: Shradha G
+# This code: Reza R Pratama
 '''
 
 from dash import html, register_page, get_asset_url

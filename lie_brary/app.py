@@ -1,6 +1,7 @@
 '''
 This is the main script for the dashboard. It will be used to create the layout of the dashboard.
-This will call pages in the container view. -R
+This will call pages in the container view.
+# Author: Reza R Pratama
 '''
 import dash
 from dash import Dash, html, dcc

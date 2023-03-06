@@ -1,3 +1,9 @@
+'''
+This file is used to predict whether a post is misinfo or not.
+Author: Xiomara Salazar
+Debugged by Reza R Pratama
+'''
+
 import pickle
 
 def predict(text):

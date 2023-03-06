@@ -1,3 +1,8 @@
+'''
+Training script for classifier
+Author: Xiomara Salazar
+'''
+
 import pandas as pd
 import pickle
 import numpy as np

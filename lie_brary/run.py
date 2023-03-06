@@ -2,7 +2,8 @@
 Run the app or the getdata script, depending on the input provided
 - To run the dashboard, type "python -m lie_brary dashboard"
 - To run update data, type "python -m lie_brary getdata"
-- R
+
+# Author: Reza R Pratama
 '''
 
 import sys

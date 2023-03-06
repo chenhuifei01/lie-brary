@@ -1,6 +1,7 @@
 '''
 Interactive mythbusting page powered by GPT-3.
-- R
+# Prompts and initial code from: Shradha G
+# Completed and put in dash by: Reza R Pratama
 '''
 from dash import dcc, html, register_page, get_asset_url, callback, Input, Output
 import lie_brary.scripts.scrap.key as key

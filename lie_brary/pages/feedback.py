@@ -1,7 +1,7 @@
 '''
 This page is to collect feedback from the user.
 The feedback will be used to improve the model.
-- R
+#Reza R Pratama
 '''
 from dash import dcc, html, register_page, get_asset_url, callback, Input, Output
 import pandas as pd

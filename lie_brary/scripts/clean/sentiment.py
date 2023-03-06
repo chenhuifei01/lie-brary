@@ -1,3 +1,11 @@
+'''
+This script is to analyze the sentiment of the text of a post and apply the prediction
+of the misinfo label to the sentiment.
+
+Author: Chen Hui Wang
+Apply prediction by: Xiomara Salazar
+'''
+
 import pandas as pd
 import numpy as np
 import nltk

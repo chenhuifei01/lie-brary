@@ -1,3 +1,7 @@
+'''
+Creating word clouds for the text of tweets and for the text of tweets based on their sentiment
+Author: Shradha G
+'''
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 import sys, os
@@ -14,10 +18,10 @@ def word_cloud(df):
         stopwords = stopwords,
         height = 600,
         width = 800)
-    
+
     misstr = ''
     for title in df[df['misinfo'] == 1]['text']:
-        misstr += title   
+        misstr += title
 
     wc.generate(misstr)
     plt.imshow(wc)
@@ -35,7 +39,7 @@ def word_cloud_sent(df):
         stopwords = stopwords,
         height = 600,
         width = 800)
-    
+
     neg_str = ''
     for title in df[df['compound'] <0]['text']:
         neg_str += title
@@ -44,7 +48,7 @@ def word_cloud_sent(df):
     plt.axis('off')
     plt.show()
     wc.to_file('wordcloud_neg.png')
-    
+
     pos_str =''
     for title in df[df['compound'] > 0 ]['text']:
         pos_str += title
@@ -53,10 +57,10 @@ def word_cloud_sent(df):
     plt.axis('off')
     plt.show()
     wc.to_file('wordcloud_pos.png')
-    
+
     neu_str = ''
     for title in df[df['compound'] == 0]['text']:
-        neu_str += title    
+        neu_str += title
     wc.generate(neu_str)
     plt.imshow(wc)
     plt.axis('off')
