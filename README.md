@@ -31,10 +31,10 @@ Note that the following impositions applied to scraping from these platforms:
 4. Activate the virtual environment: ``poetry shell``
 5. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py`` or replace with filled key.py file 
 6. Run the project:
-- For running the dashboard: ``python3 -m lie_brary dashboard``
+- For running the dashboard: ``python3 -m lie_brary dashboard`` . This will be running on port 8051 by default. (If can not run because port already in use, change the port on ``30122-project-lie-brary/lie_brary/run.py`` line 16 from port=8051 to your available port.
 - For running the script to update the data: ``python3 -m lie_brary getdata``
 
-**Note**: If you use windows, you can use ``python`` instead of ``python3``
+**Note**: If using windows, you can use ``python`` instead of ``python3``
 
 ### Using Python Virtual Environment
 1. Make the clone of the project repository
@@ -44,7 +44,7 @@ Note that the following impositions applied to scraping from these platforms:
 5. Install the dependencies: ``pip install -r requirements.txt``
 6. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py`` or replace with filled key.py file
 7. Run the project:
-- For running the dashboard: ``python3 -m lie_brary dashboard``
+- For running the dashboard: ``python3 -m lie_brary dashboard`` . This will be running on port 8051 by default. (If can not run because port already in use, change the port on ``30122-project-lie-brary/lie_brary/run.py`` line 16 from port=8051 to your available port.
 - For running the script to update the data: ``python3 -m lie_brary getdata``
 
 **Note**: Tested on Ubuntu with Python 3.8. (Not Recommended because more prone to errors)
