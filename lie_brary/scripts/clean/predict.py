@@ -11,8 +11,8 @@ def predict(text):
     Return:
         Decision - 0 if it is not misinfo and 1 if it is misinfo
     """
-    clf = pickle.load(open("model.pkl", "rb"))
-    vec = pickle.load(open("count_vect.pkl", "rb"))
+    clf = pickle.load(open("lie_brary/scripts/clean/model.pkl", "rb"))
+    vec = pickle.load(open("lie_brary/scripts/clean/count_vect.pkl", "rb"))
     text_tfidf = vec.transform([text])
     y_pred = clf.predict(text_tfidf)
 
