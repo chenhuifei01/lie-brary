@@ -1,3 +1,9 @@
+'''
+Scrape tweets from Twitter using keywords
+some code from Tweepy documentation
+compiled by Reza R Pratama
+'''
+
 # !pip install tweepy
 import sys
 import tweepy
@@ -6,16 +12,9 @@ from datetime import datetime
 import lie_brary.scripts.scrap.key as key
 
 # Authenticate to Twitter
-# This is Reza's API Key, please don't share the key.
-# Or you can create your own key on Twitter Developer
-
-# api key
 api_key = key.api_key
-# api secret key
 api_secret_key = key.api_secret_key
-# access token
 access_token = key.access_token
-# access token secret
 access_token_secret = key.access_token_secret
 
 

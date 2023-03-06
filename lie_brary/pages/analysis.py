@@ -1,6 +1,7 @@
 '''
 This page is used to display the analysis page.
-- R
+# Pages from: Shradha G
+# This code: Reza R Pratama
 '''
 
 from dash import html, register_page, get_asset_url
@@ -11,6 +12,6 @@ register_page(__name__)
 layout = html.Div([
     # get from iFrame
     html.Iframe(id='analysis_iframe',
-                src=get_asset_url('analysis.html'),
+                src=get_asset_url('analysis_data.html'),
                 style={'width': '100%', 'height': '100vh'}),
 ])

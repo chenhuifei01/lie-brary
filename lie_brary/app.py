@@ -1,6 +1,7 @@
 '''
 This is the main script for the dashboard. It will be used to create the layout of the dashboard.
-This will call pages in the container view. -R
+This will call pages in the container view.
+# Author: Reza R Pratama
 '''
 import dash
 from dash import Dash, html, dcc
@@ -21,6 +22,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Analysis", href="/analysis", active="exact", style={'font-weight': 'bold'})),
         dbc.NavItem(dbc.NavLink("Data", href="/datatable", style={'font-weight': 'bold'})),
         dbc.NavItem(dbc.NavLink("Feedback", href="/feedback", style={'font-weight': 'bold'})),
+        dbc.NavItem(dbc.NavLink("Mythbusting", href="/mythbusting", style={'font-weight': 'bold'})),
     ],
     brand_href="/",
     sticky="top",

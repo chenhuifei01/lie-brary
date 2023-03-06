@@ -1,10 +1,18 @@
+'''
+This script is to analyze the sentiment of the text of a post and apply the prediction
+of the misinfo label to the sentiment.
+
+Author: Chen Hui Wang
+Apply prediction by: Xiomara Salazar
+'''
+
 import pandas as pd
 import numpy as np
 import nltk
-nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
 #from tqdm.notebook import tqdm
 from datetime import datetime
+from lie_brary.scripts.clean.predict import predict
 
 
 sia = SentimentIntensityAnalyzer()
@@ -29,15 +37,15 @@ def sentiment_analysis(df):
     vaders = vaders.merge(df, how = 'left')
     return vaders
 
-def clean_time_t(x):
-    '''
-    Change the date format from '2023-02-05 22:51:19+00:00'
-    to '2023-02-05 22:51:19' for twitter data
-    Input: datetime
-    Output: datetime
-    '''
-    #dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
-    return datetime.strftime(x, "%Y-%m-%d %H:%M:%S")
+# def clean_time_t(x):
+#     '''
+#     Change the date format from '2023-02-05 22:51:19+00:00'
+#     to '2023-02-05 22:51:19' for twitter data
+#     Input: datetime
+#     Output: datetime
+#     '''
+#     #dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
+#     return datetime.strftime(x, "%Y-%m-%d %H:%M:%S")
 
 
 def sentiment_define(x):
@@ -62,7 +70,8 @@ def sentiment_define(x):
         return 'neutral'
 
 
-def extract_col(df, source):
+
+def extract_col(df):
     '''
     Extract the columns to output the Cleaned_data
     Inputs:
@@ -71,9 +80,9 @@ def extract_col(df, source):
     Return:
         csv file
     '''
-    # reformat the date of twitter
-    if source == 'twitter':
-        df['created_at'] = df['created_at'].apply(clean_time_t)
+    # # reformat the date of twitter
+    # if source == 'twitter':
+    #     df['created_at'] = df['created_at'].apply(clean_time_t)
 
     # extract columns
     data = {'id_str': df['id_str'],
@@ -83,8 +92,7 @@ def extract_col(df, source):
             'sentiment':df['compound'].apply(sentiment_define), # define sentiments
             'date': df['created_at'],
             'keyword': df['keyword'],
-            #'misinfo': df['decision'],
-            #'context': df['context'],
+            'misinfo': df['text'].apply(predict),
             'source': df['source']
             }
     df = pd.DataFrame(data)

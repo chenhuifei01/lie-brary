@@ -1,3 +1,8 @@
+'''
+Scrape Reddit posts using keywords using PRAW
+Author: Chen Hui Wang
+'''
+
 # ! pip install praw
 import praw
 import pandas as pd
