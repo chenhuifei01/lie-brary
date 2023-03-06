@@ -27,15 +27,15 @@ layout = html.Div([
                 options=helper.sentiment_options,
                 multi=False,
                 value=list(helper.SENTIMENT),
-                style={'width': '30%'}
+                style={'width': '50%'}
                 ),
     html.Br(),
     html.P('Input the misinformation label:'),
     dcc.Dropdown(id='misinfo',
-                options=helper.sentiment_options,
+                options=helper.fact_options,
                 multi=False,
                 value=list(helper.FACT),
-                style={'width': '30%'}
+                style={'width': '50%'}
                 ),
     html.Br(),
     html.Button('Submit', id='submit-button', n_clicks=0),

@@ -35,7 +35,7 @@ layout = html.Div([
     Input('topic', 'value')
 )
 def update_output(n_clicks, topic):
-    if topic == '' or n_clicks == 0:
+    if topic == '':
         return 'Please enter some values in topic and click submit.', 0
     openai.api_key = key.OPENAI_KEY
     if n_clicks > 0:
