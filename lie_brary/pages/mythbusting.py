@@ -1,10 +1,11 @@
 '''
 Interactive mythbusting page powered by GPT-3.
-# Prompts and initial code from: Shradha G
+# Prompt and initial code from: Shradha G
 # Completed and put in dash by: Reza R Pratama
 '''
-from dash import dcc, html, register_page, get_asset_url, callback, Input, Output
+from dash import html, register_page, callback, Input, Output
 import lie_brary.scripts.scrap.key as key
+from dash.exceptions import PreventUpdate
 import openai
 import dash_bootstrap_components as dbc
 
@@ -12,20 +13,24 @@ register_page(__name__)
 
 layout = html.Div([
     html.H1('Mythbusting the topics with GPT-3'),
-    html.P('Please enter the topic you want to mythbust.'),
+    html.P('Please enter the topic you want to mythbust.'
+           ' it may take a while to get the result after the Submit button is clicked.'),
     html.Br(),
     # input box
     dbc.Textarea(id = 'topic',
                  className="mb-3",
                  placeholder="Write the topic here...",
                  value=''),
-    html.Button('Submit', id='submit-button1', n_clicks=0),
+    dbc.Button("Submit",
+                id="submit-button1",
+                color="primary",
+                className="me-1"),
     html.Br(),
     html.Br(),
     # output box
     html.H4('Mythbusting result:'),
     html.Br(),
-    html.Div(id='output1')
+    dbc.Alert(id='output1', color="primary"),
 ])
 
 @callback(
@@ -35,13 +40,13 @@ layout = html.Div([
     Input('topic', 'value')
 )
 def update_output(n_clicks, topic):
-    if topic == '':
-        return 'Please enter some values in topic and click submit.', 0
-    openai.api_key = key.OPENAI_KEY
-    if n_clicks > 0:
+    if n_clicks is None:
+        raise PreventUpdate
+    else:
+        openai.api_key = key.OPENAI_KEY
         text = topic
         prompts = "Write text to counteract misinformation on Illinois' Pre-Trial Fairness Act in this topics: "
         completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",
                                                   messages=[{"role": "user", "content":prompts+text}])
         response = completion.choices[0].message.content
-        return response, 0
+        return response, None
