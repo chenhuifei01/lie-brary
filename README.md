@@ -6,9 +6,17 @@
 Our project’s goal is to analyze subjects that were misconstrued on social media (such as health misinfo or backlash against a law) to understand the construction and spread of certain myths. We are also considering leveraging GPT/our own messaging templates to build communication to myth-bust and help counter misinformation.  Note that we will define misinformation on the basis of what has been fact-checked as false through [International Fact-Checking Network](https://www.poynter.org/ifcn/) approved sources and [InjusticeWatch](https://www.injusticewatch.org/news/prisons-and-jails/2022/safe-t-act-purge-law-illinois-fact-check/) (NGO advocating for SAFE-T Act).
 
 ## About the data
-We scraped Twitter and Reddit data for keywords regarding the SAFE-T Act which included the keywords like “Safe-T”, “Purge Law”, “Pretrial Fairness Act”. [Twitter’s API](https://developer.twitter.com/en/docs/twitter-api) only provides data from the last 7 days and [Reddit’s API](https://www.reddit.com/dev/api/) provides a wider range so we focused on posts from the past year. 
+Our first step was to scrape data from social media sites, Twitter and Reddit, via their APIs. We attempted to scrape data from Meta but found that access to developers was extremely limited and largely restricted to Ads Library information -- which would mean that our data would not be balanced with other sources (inorganic Ads versus organic content from Reddit or Twitter). We already had access to a Twitter API key and found Reddit highly accessible which tipped the scales in favor of these platforms.
+
+To ensure parallelism of our data, we also discounted YouTube or TikTok. This is because we pulled text/post information from Twitter and Reddit; the difference in entity types (videos/short reels) would corrupt our analysis as it would mean that our sample groups were unbalanced.
+
+Note that the following impositions applied to scraping from these platforms:
+- Twitter: the search index had a 7 day limit and pulled data only for the preceding week
+- Reddit: limited pulls to 200 posts while using requests + difficulting in filtering specific keywords
 
 ## How our files interact?
+![image](lie_brary/assets/concept.png)
+
 
 ## Process overview
 ![image](lie_brary/assets/liebrary_diagram.png)
