@@ -9,7 +9,6 @@ Apply prediction by: Xiomara Salazar
 import pandas as pd
 import numpy as np
 import nltk
-nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
 #from tqdm.notebook import tqdm
 from datetime import datetime
