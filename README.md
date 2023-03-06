@@ -29,7 +29,7 @@ Note that the following impositions applied to scraping from these platforms:
 2. Go to the project directory: ``cd 30122-project-lie-brary``
 3. From the directory install virtual environment and dependencies: ``poetry install``
 4. Activate the virtual environment: ``poetry shell``
-5. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py` or replace with filled key.py file 
+5. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py`` or replace with filled key.py file 
 6. Run the project:
 - For running the dashboard: ``python3 -m lie_brary dashboard``
 - For running the script to update the data: ``python3 -m lie_brary getdata``
@@ -42,7 +42,7 @@ Note that the following impositions applied to scraping from these platforms:
 3. Create a virtual environment: ``python3 -m venv liebrary_env``
 4. Activate the virtual environment: ``source liebrary_env/bin/activate``
 5. Install the dependencies: ``pip install -r requirements.txt``
-6. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py` or replace with filled key.py file
+6. Fill credentials on ``30122-project-lie-brary/lie_brary/scripts/scrap/key.py`` or replace with filled key.py file
 7. Run the project:
 - For running the dashboard: ``python3 -m lie_brary dashboard``
 - For running the script to update the data: ``python3 -m lie_brary getdata``
