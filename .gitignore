@@ -3,4 +3,3 @@
 **/__pycache__/
 lie_brary/scripts/scrap/key.py
 .vscode
-poetry.lock
