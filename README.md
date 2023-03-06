@@ -45,7 +45,7 @@ Note that the following impositions applied to scraping from these platforms:
 - For running the dashboard: ``python3 -m lie_brary dashboard``
 - For running the script to update the data: ``python3 -m lie_brary getdata``
 
-**Note**: Tested on Ubuntu with Python 3.8.5, install takes longer than using poetry
+**Note**: Tested on Ubuntu with Python 3.8. (Not Recommended because more prone to errors)
 
 ## Links to live dashboard:
 [Dashboard](http://rezarzky.my.id:8051/)
