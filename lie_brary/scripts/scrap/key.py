@@ -1,16 +1,16 @@
 # Twitter Credentials
-api_key = '5ziWfVLWY4QygWCy3AzD2UQbQ'
-api_secret_key = 'bLdFyVDeDiiGzJaMYwlHwq5LAIbeS3J53Z1gK2ITCRTZVnbHMR'
-access_token = '115651874-xWpSpguXOlah1PtpcmXC7VjWAcryLxnGG1MxF141'
-access_token_secret = 'U3Ie5qhDa3f5DbFikPgor3xL7o3SHjhVwqdl2haSPYuv7'
+api_key = ''
+api_secret_key = ''
+access_token = ''
+access_token_secret = ''
 
 
 # Authenticate to Reddit
-CLIENT_ID = 'shyhwdBJkuFVOeR-cI-piw'
-SECRET_KEY = 'A984oPGBir78gCC8Ce8RBe1X9K3chg'
-pw = 'An4021080'
-user = 'chenhuifei1'
+CLIENT_ID = ''
+SECRET_KEY = ''
+pw = ''
+user = ''
 
 
 # OPENAI API
-OPENAI_KEY = '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'
+OPENAI_KEY = ''
