@@ -1,6 +1,6 @@
 '''
 Helper functions for dashboard
-- R
+by Reza R Pratama
 '''
 import pandas as pd
 
