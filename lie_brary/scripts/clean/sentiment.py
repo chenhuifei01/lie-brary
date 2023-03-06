@@ -9,8 +9,8 @@ Apply prediction by: Xiomara Salazar
 import pandas as pd
 import numpy as np
 import nltk
+nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
-#from tqdm.notebook import tqdm
 from datetime import datetime
 from lie_brary.scripts.clean.predict import predict
 
@@ -36,16 +36,6 @@ def sentiment_analysis(df):
     vaders = vaders.reset_index().rename(columns = {'index':'id_str'})
     vaders = vaders.merge(df, how = 'left')
     return vaders
-
-# def clean_time_t(x):
-#     '''
-#     Change the date format from '2023-02-05 22:51:19+00:00'
-#     to '2023-02-05 22:51:19' for twitter data
-#     Input: datetime
-#     Output: datetime
-#     '''
-#     #dt_obj = datetime.strptime(x,"%Y-%m-%d %H:%M:%S%z")
-#     return datetime.strftime(x, "%Y-%m-%d %H:%M:%S")
 
 
 def sentiment_define(x):
@@ -96,10 +86,5 @@ def extract_col(df):
             'source': df['source']
             }
     df = pd.DataFrame(data)
-
-    # Saving dataframe as a CSV file
-    # filename = 'cleaned_data_'+ source + datetime.now().strftime('%Y%m%d_%H') + '.csv'
-    # df.to_csv(filename) # haven't change the path to data
-    # print('File saved as ', filename)
 
     return df
